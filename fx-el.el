@@ -1,6 +1,10 @@
-;; This buffer is for notes you don't want to save, and for Lisp evaluation.
-;; If you want to create a file, visit that file with C-x C-f,
-;; then enter the text in that file's own buffer.
+;;
+;;fx in emacs
+;;
+;;
+;;created by fvi@
+;;created at 20150630
+;;
 
 (defvar fx-update-interval-time 5000 "interval time for update fx_emacs")
 
@@ -19,6 +23,7 @@
 (require 'cl)
 
 (defun fx ()
+  ;;M-x fx　で実行できるようにする
   (interactive)
   (let ((url "http://www.gaitameonline.com/rateaj/getrate")
 	(type (read-from-minibuffer "What is currency type? (Default:" "USDJPY"))
@@ -34,10 +39,13 @@
       (delete-region (point-min) (search-forward "\n\n" nil t))
 
       (let ((set_currency (cl-remove-if-not (lambda (x) (string-equal type (cdr(assoc 'currencyPairCode x)))) (cdr (car (json-read-from-string (buffer-string))))))) 
+
+      (message "%s@(%s)" (format "%s -> %s,%s" (cdr(assoc 'currencyPairCode (aref set_currency 0))) (cdr(assoc 'bid (aref set_currency 0))) (cdr(assoc 'ask (aref set_currency 0)))) (format-time-string "%H:%M:%S"))
+
+      ;;価格更新
       (setq fx-display-bid (cdr (assoc 'bid (aref set_currency 0))))
       (setq fx-display-ask (cdr (assoc 'bid (aref set_currency 0))))
 
-      (message "%s::%s" (format "%s -> %s,%s" (cdr(assoc 'currencyPairCode (aref set_currency 0))) (cdr(assoc 'bid (aref set_currency 0))) (cdr(assoc 'ask (aref set_currency 0)))) "↑" )
 
       )
       ;;サーバへの負荷防止のため一定の期間waitする
@@ -49,8 +57,8 @@
 
 
 
-(fx)
 
 
-(window-edges)
+
+
 
