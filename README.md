@@ -41,7 +41,7 @@ M-x fx
 
 ##作成に用いたもの
 [gaitameonline](http://www.gaitameonline.com/rateaj/getrate "外為オンライン")
-有難うございました
+さんが提供するjsonAPIを用いました。有難うございました
 
 
 
