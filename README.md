@@ -41,6 +41,12 @@ M-x fx
 * EURNZD
 * AUDCHF
 
+##今後の予定
+
+* マルチスレッド対応
+* 価格変動時に背景をチカチカさせる
+* 別のウィンドウで表示する
+
 ##作成に用いたもの
 [gaitameonline](http://www.gaitameonline.com/rateaj/getrate "外為オンライン")
 さんが提供するjsonAPIを用いました。有難うございました
